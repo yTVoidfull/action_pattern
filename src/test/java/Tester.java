@@ -1,22 +1,22 @@
 import grammar.subject.Element;
 import grammar.verb.Click;
 import grammar.verb.Move;
+import grammar.verb.Open;
+import grammar.verb.Write;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import testbase.TestBase;
-import webdriver.Selector;
 
-import java.lang.reflect.Method;
-
-import static webdriver.SelectorType.CSS;
+import static pages.HomePage.searchBox;
 
 public class Tester extends TestBase {
 
 
     @Test
     public void anyTest() {
-        Element el = new Element("Elementados").with(new Selector(CSS, ".element"));
-        Move.to(el);
-        Click.on(el);
+        Open.theFollowing(new HomePage());
+        Click.on(searchBox);
+        Write.into(searchBox).theFollowing("hello");
     }
 
     @Test
